@@ -14,6 +14,8 @@ const database = process.env.DB_NAME;
 const pass = process.env.PGPASSWORD;
 const email = process.env.EMAIL;
 const emailPass = process.env.EMAIL_PASS;
+const toEmail = process.env.TO_EMAIL;
+const fromEmail = process.env.FROM_EMAIL;
 
 const date = new Date();
 const currentDate = `${date.getFullYear()}-${
@@ -45,8 +47,8 @@ async function sendEmail() {
   });
 
   const info = {
-    from: '"Dev Backups 👻" <devsquadxbackups@gmail.com>',
-    to: "devsquadx@gmail.com",
+    from: `"Backups 👻" <${fromEmail}>`,
+    to: toEmail,
     subject: `Backups - ${database}`,
     html: "<b>Find the attached backup file</b>",
     attachments: [{ path: `backups/${fileName}.gz` }],
