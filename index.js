@@ -37,12 +37,16 @@ async function backup() {
 
 async function sendEmail() {
   const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    host: "mail.blacknight.com",
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
       user: email,
       pass: emailPass,
+    },
+    tls: {
+      //rejectUnauthorized: false
+      secureProtocol: "TLSv1_method",
     },
   });
 
